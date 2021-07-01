@@ -19,22 +19,24 @@ namespace DOTweenManager.Editor
             switch (tweenTypeProp.enumValueIndex)
             {
                 case 0:
-                    DrawElementsContainingPath(pos, property, "Movement");
+                    DrawElementsContainingPath(ref pos, property, "Movement");
                     break;
 
                 case 1:
-                    DrawElementsContainingPath(pos, property, "Scale");
+                    DrawElementsContainingPath(ref pos, property, "Scale");
                     break;
 
                 case 2:
-                    DrawElementsContainingPath(pos, property, "Rotation");
+                    DrawElementsContainingPath(ref pos, property, "Rotation");
                     break;
             }
 
+            SerializedProperty p = property.FindPropertyRelative("playBelowTweenAfterCompletingCurrentTween");
+            EditorGUI.PropertyField(pos, p, new GUIContent(p.displayName));
             property.serializedObject.ApplyModifiedProperties();
         }
 
-        private void DrawElementsContainingPath(Rect pos, SerializedProperty property, string value)
+        private void DrawElementsContainingPath(ref Rect pos, SerializedProperty property, string value)
         {
             SerializedProperty iterator = property.serializedObject.GetIterator();
             iterator.Next(true);
@@ -67,7 +69,7 @@ namespace DOTweenManager.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return (base.GetPropertyHeight(property, label) * 4f) + EditorGUIUtility.singleLineHeight;
+            return (base.GetPropertyHeight(property, label) * 5f) + EditorGUIUtility.singleLineHeight;
         }
     }
 }

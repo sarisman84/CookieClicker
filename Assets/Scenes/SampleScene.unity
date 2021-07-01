@@ -160,19 +160,65 @@ MonoBehaviour:
     targetScale: {x: 0, y: 0, z: 0}
     transitionDuration_Scale: 0
     transitionType_Scale: 0
-    targetRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-    transitionDuration_Rotation: 5
+    targetRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+    transitionDuration_Rotation: 0.5
     transitionType_Rotation: 2
+    playBelowTweenAfterCompletingCurrentTween: 1
   - tweenType: 0
     targetMovement: {x: 5, y: 0, z: 0}
-    transitionDuration_Movement: 5
-    transitionType_Movement: 2
+    transitionDuration_Movement: 0.5
+    transitionType_Movement: 3
     targetScale: {x: 0, y: 0, z: 0}
     transitionDuration_Scale: 0
     transitionType_Scale: 0
     targetRotation: {x: 360, y: 0, z: 0, w: 0}
     transitionDuration_Rotation: 10
     transitionType_Rotation: 1
+    playBelowTweenAfterCompletingCurrentTween: 0
+  - tweenType: 1
+    targetMovement: {x: 5, y: 0, z: 0}
+    transitionDuration_Movement: 0.5
+    transitionType_Movement: 3
+    targetScale: {x: 2, y: 2, z: 2}
+    transitionDuration_Scale: 0.5
+    transitionType_Scale: 2
+    targetRotation: {x: 1, y: -0.00000004371139, z: -0.00000004371139, w: 1.9106855e-15}
+    transitionDuration_Rotation: 10
+    transitionType_Rotation: 1
+    playBelowTweenAfterCompletingCurrentTween: 1
+  - tweenType: 0
+    targetMovement: {x: 0, y: 0, z: 0}
+    transitionDuration_Movement: 0.5
+    transitionType_Movement: 3
+    targetScale: {x: 3, y: 3, z: 3}
+    transitionDuration_Scale: 0.5
+    transitionType_Scale: 2
+    targetRotation: {x: 1, y: -0.00000004371139, z: -0.00000004371139, w: 1.9106855e-15}
+    transitionDuration_Rotation: 10
+    transitionType_Rotation: 1
+    playBelowTweenAfterCompletingCurrentTween: 0
+  - tweenType: 1
+    targetMovement: {x: 0, y: 0, z: 0}
+    transitionDuration_Movement: 0.5
+    transitionType_Movement: 3
+    targetScale: {x: 1, y: 1, z: 1}
+    transitionDuration_Scale: 0.5
+    transitionType_Scale: 2
+    targetRotation: {x: 1, y: -0.00000004371139, z: -0.00000004371139, w: 1.9106855e-15}
+    transitionDuration_Rotation: 10
+    transitionType_Rotation: 1
+    playBelowTweenAfterCompletingCurrentTween: 0
+  - tweenType: 2
+    targetMovement: {x: 0, y: 0, z: 0}
+    transitionDuration_Movement: 0.5
+    transitionType_Movement: 3
+    targetScale: {x: 1, y: 1, z: 1}
+    transitionDuration_Scale: 0.5
+    transitionType_Scale: 2
+    targetRotation: {x: 0, y: 0, z: 0, w: 1}
+    transitionDuration_Rotation: 0.5
+    transitionType_Rotation: 2
+    playBelowTweenAfterCompletingCurrentTween: 0
   runOnAwake: 1
 --- !u!4 &100589210
 Transform:
