@@ -37,20 +37,28 @@ public class DoTweenManager : MonoBehaviour
             switch (setting.tweenType)
             {
                 case DoTweenSettings.TweenType.Move:
+
                     if (setting.playBelowTweenAfterCompletingCurrentTween)
                     {
-                        yield return transform
-                            .DOMove(
-                                setting.useLocalMovement
-                                    ? postionSinceTweening + setting.targetMovement
-                                    : setting.targetMovement,
-                                setting.transitionDurationMovement)
-                            .SetEase(setting.transitionTypeMovement).WaitForCompletion();
+                        yield return (setting.useLocalMovement)
+                            ? transform
+                                .DOLocalMove(setting.targetMovement,
+                                    setting.transitionDurationMovement)
+                                .SetEase(setting.transitionTypeMovement).WaitForCompletion()
+                            : transform
+                                .DOMove(setting.targetMovement,
+                                    setting.transitionDurationMovement)
+                                .SetEase(setting.transitionTypeMovement).WaitForCompletion();
                     }
+                    else if (setting.useLocalMovement)
+                        transform
+                            .DOLocalMove(setting.targetMovement,
+                                setting.transitionDurationMovement)
+                            .SetEase(setting.transitionTypeMovement);
                     else
-                        transform.DOMove(setting.useLocalMovement
-                                ? postionSinceTweening + setting.targetMovement
-                                : setting.targetMovement, setting.transitionDurationMovement)
+                        transform
+                            .DOMove(setting.targetMovement,
+                                setting.transitionDurationMovement)
                             .SetEase(setting.transitionTypeMovement);
 
                     break;
