@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd3af541-52f4-4452-bd84-53a4690e76d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="fd3af541-52f4-4452-bd84-53a4690e76d0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,8 +19,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/CookieAnimator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CookieClicker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DOTweenManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/Editor/DoTweenSettingsDrawer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uiRcxwhJBzo2jbuAViaWP4XrKM" />
@@ -71,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625146517784</updated>
-      <workItem from="1625146526749" duration="3983000" />
+      <workItem from="1625146526749" duration="7368000" />
     </task>
     <servers />
   </component>

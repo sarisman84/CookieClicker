@@ -8,31 +8,66 @@ public class DoTweenManager : MonoBehaviour
 {
     public List<DoTweenSettings> settings;
     public bool runOnAwake;
+    private Coroutine _coroutine;
 
     private void Awake()
     {
-        ExcecuteTweening();
+        if (runOnAwake)
+        {
+            StartTweening();
+        }
     }
 
-    private void ExcecuteTweening()
+    public void StartTweening()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        StartCoroutine(Tween());
+    }
+
+    public IEnumerator Tween()
     {
         foreach (var setting in settings)
         {
             switch (setting.tweenType)
             {
                 case DoTweenSettings.TweenType.Move:
-                    transform.DOMove(setting.targetMovement, setting.transitionDuration_Movement)
-                        .SetEase(setting.transitionType_Movement);
+                    if (setting.playBelowTweenAfterCompletingCurrentTween)
+                    {
+                        yield return transform.DOMove(setting.targetMovement, setting.transitionDuration_Movement)
+                            .SetEase(setting.transitionType_Movement).WaitForCompletion();
+                    }
+                    else
+                        transform.DOMove(setting.targetMovement, setting.transitionDuration_Movement)
+                            .SetEase(setting.transitionType_Movement);
+
                     break;
                 case DoTweenSettings.TweenType.Rescale:
-                    transform.DOScale(setting.targetScale, setting.transitionDuration_Scale)
-                        .SetEase(setting.transitionType_Scale);
+                    if (setting.playBelowTweenAfterCompletingCurrentTween)
+                    {
+                        yield return transform.DOScale(setting.targetScale, setting.transitionDuration_Scale)
+                            .SetEase(setting.transitionType_Scale).WaitForCompletion();
+                    }
+                    else
+                        transform.DOScale(setting.targetScale, setting.transitionDuration_Scale)
+                            .SetEase(setting.transitionType_Scale);
+
                     break;
                 case DoTweenSettings.TweenType.Rotate:
-                    transform.DORotateQuaternion(setting.targetRotation, setting.transitionDuration_Rotation)
-                        .SetEase(setting.transitionType_Rotation);
+                    if (setting.playBelowTweenAfterCompletingCurrentTween)
+                    {
+                        yield return transform
+                            .DORotateQuaternion(setting.targetRotation, setting.transitionDuration_Rotation)
+                            .SetEase(setting.transitionType_Rotation).WaitForCompletion();
+                    }
+                    else
+                        transform.DORotateQuaternion(setting.targetRotation, setting.transitionDuration_Rotation)
+                            .SetEase(setting.transitionType_Rotation);
+
                     break;
             }
+
+            yield return null;
         }
     }
 }
@@ -61,4 +96,6 @@ public struct DoTweenSettings
     public Quaternion targetRotation;
     public float transitionDuration_Rotation;
     public Ease transitionType_Rotation;
+
+    public bool playBelowTweenAfterCompletingCurrentTween;
 }
