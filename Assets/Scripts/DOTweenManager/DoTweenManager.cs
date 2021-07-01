@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoTweenManager : MonoBehaviour
 {
@@ -18,8 +20,11 @@ public class DoTweenManager : MonoBehaviour
         }
     }
 
+    private Vector3 postionSinceTweening;
+
     public void StartTweening()
     {
+        postionSinceTweening = transform.position;
         if (_coroutine != null)
             StopCoroutine(_coroutine);
         StartCoroutine(Tween());
@@ -34,35 +39,117 @@ public class DoTweenManager : MonoBehaviour
                 case DoTweenSettings.TweenType.Move:
                     if (setting.playBelowTweenAfterCompletingCurrentTween)
                     {
-                        yield return transform.DOMove(setting.targetMovement, setting.transitionDuration_Movement)
-                            .SetEase(setting.transitionType_Movement).WaitForCompletion();
+                        yield return transform
+                            .DOMove(
+                                setting.useLocalMovement
+                                    ? postionSinceTweening + setting.targetMovement
+                                    : setting.targetMovement,
+                                setting.transitionDurationMovement)
+                            .SetEase(setting.transitionTypeMovement).WaitForCompletion();
                     }
                     else
-                        transform.DOMove(setting.targetMovement, setting.transitionDuration_Movement)
-                            .SetEase(setting.transitionType_Movement);
+                        transform.DOMove(setting.useLocalMovement
+                                ? postionSinceTweening + setting.targetMovement
+                                : setting.targetMovement, setting.transitionDurationMovement)
+                            .SetEase(setting.transitionTypeMovement);
 
                     break;
                 case DoTweenSettings.TweenType.Rescale:
                     if (setting.playBelowTweenAfterCompletingCurrentTween)
                     {
-                        yield return transform.DOScale(setting.targetScale, setting.transitionDuration_Scale)
-                            .SetEase(setting.transitionType_Scale).WaitForCompletion();
+                        yield return transform.DOScale(setting.targetScale, setting.transitionDurationScale)
+                            .SetEase(setting.transitionTypeScale).WaitForCompletion();
                     }
                     else
-                        transform.DOScale(setting.targetScale, setting.transitionDuration_Scale)
-                            .SetEase(setting.transitionType_Scale);
+                        transform.DOScale(setting.targetScale, setting.transitionDurationScale)
+                            .SetEase(setting.transitionTypeScale);
 
                     break;
                 case DoTweenSettings.TweenType.Rotate:
                     if (setting.playBelowTweenAfterCompletingCurrentTween)
                     {
                         yield return transform
-                            .DORotateQuaternion(setting.targetRotation, setting.transitionDuration_Rotation)
-                            .SetEase(setting.transitionType_Rotation).WaitForCompletion();
+                            .DORotateQuaternion(setting.targetRotation, setting.transitionDurationRotation)
+                            .SetEase(setting.transitionTypeRotation).WaitForCompletion();
                     }
                     else
-                        transform.DORotateQuaternion(setting.targetRotation, setting.transitionDuration_Rotation)
-                            .SetEase(setting.transitionType_Rotation);
+                        transform
+                            .DORotateQuaternion(setting.targetRotation, setting.transitionDurationRotation)
+                            .SetEase(setting.transitionTypeRotation);
+
+                    break;
+
+                case DoTweenSettings.TweenType.Fade:
+                    List<Component> elementsToFade = new List<Component>();
+                    elementsToFade.Add(GetComponent<TMP_Text>());
+                    elementsToFade.Add(GetComponent<Text>());
+                    elementsToFade.Add(GetComponent<Image>());
+                    elementsToFade.Add(GetComponent<CanvasGroup>());
+
+
+                    foreach (var elementToFade in elementsToFade)
+                    {
+                        if (setting.playBelowTweenAfterCompletingCurrentTween)
+                        {
+                            switch (elementToFade)
+                            {
+                                case Text text:
+                                    yield return text.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case TMP_Text tmpText:
+                                    yield return tmpText.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case Image image:
+                                    yield return image.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case CanvasGroup canvasGroup:
+                                    yield return canvasGroup.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+                            }
+
+                            if (setting.uponFadeCompletionDestroyGameObject)
+                            {
+                                Destroy(gameObject);
+                                yield return null;
+                            }
+                            else if (setting.uponFadeCompletionDisableGameObject)
+                            {
+                                gameObject.SetActive(false);
+                                yield return null;
+                            }
+                        }
+                        else
+                            switch (elementToFade)
+                            {
+                                case Text text:
+                                    text.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case TMP_Text tmpText:
+                                    tmpText.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case Image image:
+                                    image.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+
+                                case CanvasGroup canvasGroup:
+                                    canvasGroup.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    break;
+                            }
+                    }
+
 
                     break;
             }
@@ -80,22 +167,30 @@ public struct DoTweenSettings
     {
         Move,
         Rescale,
-        Rotate
+        Rotate,
+        Fade
     }
 
     public TweenType tweenType;
 
     public Vector3 targetMovement;
-    public float transitionDuration_Movement;
-    public Ease transitionType_Movement;
+    public bool useLocalMovement;
+    public float transitionDurationMovement;
+    public Ease transitionTypeMovement;
 
     public Vector3 targetScale;
-    public float transitionDuration_Scale;
-    public Ease transitionType_Scale;
+    public float transitionDurationScale;
+    public Ease transitionTypeScale;
 
     public Quaternion targetRotation;
-    public float transitionDuration_Rotation;
-    public Ease transitionType_Rotation;
+    public float transitionDurationRotation;
+    public Ease transitionTypeRotation;
+
+    public float fadeAmm;
+    public float transitionDurationFade;
+    public Ease transitionTypeFade;
+    public bool uponFadeCompletionDisableGameObject;
+    public bool uponFadeCompletionDestroyGameObject;
 
     public bool playBelowTweenAfterCompletingCurrentTween;
 }
