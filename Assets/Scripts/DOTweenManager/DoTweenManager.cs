@@ -14,10 +14,15 @@ public class DoTweenManager : MonoBehaviour
     {
         if (runOnAwake)
         {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            StartCoroutine(Tween());
+            StartTweening();
         }
+    }
+
+    public void StartTweening()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        StartCoroutine(Tween());
     }
 
     public IEnumerator Tween()
