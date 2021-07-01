@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7512103896678353039}
   - component: {fileID: 6304478172774729519}
   - component: {fileID: 3787064952638041772}
-  - component: {fileID: 185562106964775196}
+  - component: {fileID: 2166665488884084870}
   m_Layer: 0
   m_Name: Cookie
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &185562106964775196
+--- !u!114 &2166665488884084870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 7820088599367585059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62cb19c1e5f51984ba67614f4b8d79be, type: 3}
+  m_Script: {fileID: 11500000, guid: afaf7b62476d57b4fa1cd498a374eb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+  - tweenType: 1
+    targetMovement: {x: 0, y: 0, z: 0}
+    transitionDuration_Movement: 0
+    transitionType_Movement: 0
+    targetScale: {x: 2, y: 2, z: 2}
+    transitionDuration_Scale: 0.25
+    transitionType_Scale: 3
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    transitionDuration_Rotation: 0
+    transitionType_Rotation: 0
+    playBelowTweenAfterCompletingCurrentTween: 1
+  - tweenType: 1
+    targetMovement: {x: 0, y: 0, z: 0}
+    transitionDuration_Movement: 0
+    transitionType_Movement: 0
+    targetScale: {x: 1, y: 1, z: 1}
+    transitionDuration_Scale: 0.25
+    transitionType_Scale: 2
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    transitionDuration_Rotation: 0
+    transitionType_Rotation: 0
+    playBelowTweenAfterCompletingCurrentTween: 0
+  runOnAwake: 0

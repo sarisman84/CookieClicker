@@ -1,14 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
-public class CookieClicker : MonoBehaviour
+namespace DefaultNamespace
 {
-    public UnityEvent onCookieClicked;
-    public void ClickCookie()
+    public class CookieClicker
     {
-        Debug.Log("Cookie Clicked");
-        onCookieClicked?.Invoke();
+        private static CookieClicker _clicker;
+
+        public static CookieClicker SingletonAccess
+        {
+            get
+            {
+                _clicker ??= new CookieClicker();
+                return _clicker;
+            }
+            private set => _clicker = value;
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        public static void OnGameStart()
+        {
+            SingletonAccess = new CookieClicker();
+        }
+
+        public CookieClicker()
+        {
+            CurrentValue = 0;
+            CurrentAddValue = 1;
+        }
+
+        public int CurrentValue { get; private set; }
+        public int CurrentAddValue { get; set; }
+
+
+        public void IncrementValue()
+        {
+            CurrentValue += CurrentAddValue;
+        }
     }
 }
