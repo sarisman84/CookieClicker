@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6304478172774729519}
   - component: {fileID: 3787064952638041772}
   - component: {fileID: 2166665488884084870}
+  - component: {fileID: 3626093769148917668}
   m_Layer: 0
   m_Name: Cookie
   m_TagString: Untagged
@@ -113,24 +114,56 @@ MonoBehaviour:
   settings:
   - tweenType: 1
     targetMovement: {x: 0, y: 0, z: 0}
-    transitionDuration_Movement: 0
-    transitionType_Movement: 0
-    targetScale: {x: 2, y: 2, z: 2}
-    transitionDuration_Scale: 0.25
-    transitionType_Scale: 3
+    useLocalMovement: 0
+    transitionDurationMovement: 0
+    transitionTypeMovement: 0
+    targetScale: {x: 1.25, y: 1.25, z: 1.25}
+    transitionDurationScale: 0.1
+    transitionTypeScale: 2
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
-    transitionDuration_Rotation: 0
-    transitionType_Rotation: 0
+    transitionDurationRotation: 0
+    transitionTypeRotation: 0
+    initialFadeAmm: 0
+    targetFadeAmm: 0
+    transitionDurationFade: 0
+    transitionTypeFade: 0
+    uponFadeCompletionDisableGameObject: 0
+    uponFadeCompletionDestroyGameObject: 0
     playBelowTweenAfterCompletingCurrentTween: 1
   - tweenType: 1
     targetMovement: {x: 0, y: 0, z: 0}
-    transitionDuration_Movement: 0
-    transitionType_Movement: 0
+    useLocalMovement: 0
+    transitionDurationMovement: 0
+    transitionTypeMovement: 0
     targetScale: {x: 1, y: 1, z: 1}
-    transitionDuration_Scale: 0.25
-    transitionType_Scale: 2
+    transitionDurationScale: 0.1
+    transitionTypeScale: 3
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
-    transitionDuration_Rotation: 0
-    transitionType_Rotation: 0
+    transitionDurationRotation: 0
+    transitionTypeRotation: 0
+    initialFadeAmm: 0
+    targetFadeAmm: 0
+    transitionDurationFade: 0
+    transitionTypeFade: 0
+    uponFadeCompletionDisableGameObject: 0
+    uponFadeCompletionDestroyGameObject: 0
     playBelowTweenAfterCompletingCurrentTween: 0
   runOnAwake: 0
+--- !u!114 &3626093769148917668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820088599367585059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ff0816954c0984e91f4695d6ae028c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationPath:
+  - {x: 90, y: 0, z: 0}
+  - {x: 180, y: 90, z: 0}
+  - {x: -90, y: 180, z: 90}
+  - {x: 0, y: -90, z: 180}
+  rotationSpeed: 12

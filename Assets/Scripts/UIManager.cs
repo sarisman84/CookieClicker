@@ -14,7 +14,7 @@ namespace DefaultNamespace
         private Camera _camera;
         private Coroutine _coroutine;
         private RectTransform _rectTransform;
-        
+
         public TMP_Text textPrefab;
         public TMP_Text scoreCounter;
 
@@ -38,8 +38,7 @@ namespace DefaultNamespace
                 scoreCounter.text = CookieClicker.SingletonAccess.CurrentValue.ToString();
             }
         }
-        
-        
+
 
         public void SpawnText(string text)
         {
@@ -50,13 +49,15 @@ namespace DefaultNamespace
 
         private IEnumerator StartUpdatingText(string text)
         {
-            TMP_Text textClone = Instantiate(textPrefab, transform);
+            TMP_Text textClone = ObjectPooler.Instantiate(textPrefab, 20, transform);
             textClone.transform.localPosition = Vector3.zero;
+            textClone.gameObject.SetActive(true);
 
             textClone.text = $"+{text}";
 
             DoTweenManager manager = textClone.GetComponent<DoTweenManager>();
             yield return manager.Tween();
+            
         }
 
         private Vector3 GetWorldPositionFromScreen(Vector2 mousePosition)

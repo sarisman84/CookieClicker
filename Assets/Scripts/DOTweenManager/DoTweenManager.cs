@@ -102,23 +102,34 @@ public class DoTweenManager : MonoBehaviour
                             switch (elementToFade)
                             {
                                 case Text text:
-                                    yield return text.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    text.color = new Color(text.color.r, text.color.g, text.color.b,
+                                        setting.initialFadeAmm);
+                                    yield return text.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case TMP_Text tmpText:
-                                    yield return tmpText.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    tmpText.color = new Color(tmpText.color.r, tmpText.color.g, tmpText.color.b,
+                                        setting.initialFadeAmm);
+                                    yield return tmpText.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case Image image:
-                                    yield return image.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    image.color = new Color(image.color.r, image.color.g, image.color.b,
+                                        setting.initialFadeAmm);
+                                    yield return image.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case CanvasGroup canvasGroup:
-                                    yield return canvasGroup.DOFade(setting.fadeAmm, setting.transitionDurationFade)
-                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    if (canvasGroup)
+                                    {
+                                        canvasGroup.alpha = setting.initialFadeAmm;
+                                        yield return canvasGroup.DOFade(setting.targetFadeAmm,
+                                                setting.transitionDurationFade)
+                                            .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    }
                                     break;
                             }
 
@@ -127,7 +138,8 @@ public class DoTweenManager : MonoBehaviour
                                 Destroy(gameObject);
                                 yield return null;
                             }
-                            else if (setting.uponFadeCompletionDisableGameObject)
+
+                            if (setting.uponFadeCompletionDisableGameObject)
                             {
                                 gameObject.SetActive(false);
                                 yield return null;
@@ -137,23 +149,34 @@ public class DoTweenManager : MonoBehaviour
                             switch (elementToFade)
                             {
                                 case Text text:
-                                    text.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    text.color = new Color(text.color.r, text.color.g, text.color.b,
+                                        setting.initialFadeAmm);
+                                    text.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case TMP_Text tmpText:
-                                    tmpText.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    tmpText.color = new Color(tmpText.color.r, tmpText.color.g, tmpText.color.b,
+                                        setting.initialFadeAmm);
+                                    tmpText.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case Image image:
-                                    image.DOFade(setting.fadeAmm, setting.transitionDurationFade)
+                                    image.color = new Color(image.color.r, image.color.g, image.color.b,
+                                        setting.initialFadeAmm);
+                                    image.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
                                         .SetEase(setting.transitionTypeFade).WaitForCompletion();
                                     break;
 
                                 case CanvasGroup canvasGroup:
-                                    canvasGroup.DOFade(setting.fadeAmm, setting.transitionDurationFade)
-                                        .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    if (canvasGroup)
+                                    {
+                                        canvasGroup.alpha = setting.initialFadeAmm;
+                                        canvasGroup.DOFade(setting.targetFadeAmm, setting.transitionDurationFade)
+                                            .SetEase(setting.transitionTypeFade).WaitForCompletion();
+                                    }
+
                                     break;
                             }
                     }
@@ -194,7 +217,8 @@ public struct DoTweenSettings
     public float transitionDurationRotation;
     public Ease transitionTypeRotation;
 
-    public float fadeAmm;
+    public float initialFadeAmm;
+    public float targetFadeAmm;
     public float transitionDurationFade;
     public Ease transitionTypeFade;
     public bool uponFadeCompletionDisableGameObject;
