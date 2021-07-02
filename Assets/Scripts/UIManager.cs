@@ -12,10 +12,11 @@ namespace DefaultNamespace
         private EventSystem _eventSystem;
         private InputSystemUIInputModule _newInputModule;
         private Camera _camera;
-        public TMP_Text textPrefab;
         private Coroutine _coroutine;
         private RectTransform _rectTransform;
-
+        
+        public TMP_Text textPrefab;
+        public TMP_Text scoreCounter;
 
         private void Awake()
         {
@@ -25,7 +26,22 @@ namespace DefaultNamespace
             _newInputModule = _eventSystem.GetComponent<InputSystemUIInputModule>();
         }
 
-        public void UpdateText(string text)
+        private void Update()
+        {
+            UpdateScore();
+        }
+
+        public void UpdateScore()
+        {
+            if (scoreCounter)
+            {
+                scoreCounter.text = CookieClicker.SingletonAccess.CurrentValue.ToString();
+            }
+        }
+        
+        
+
+        public void SpawnText(string text)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
