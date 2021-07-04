@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3af541-52f4-4452-bd84-53a4690e76d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CookieClicker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CookieClicker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Graphics/Text (TMP).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Graphics/Text (TMP).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieAnimator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieAnimator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieClicker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieClicker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieInteractor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CookieInteractor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utility/ObjectPooler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utility/ObjectPooler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +31,11 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StaticDisplayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/ObjectPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FX/RotatorSequencer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CookieManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DOTweenManager/Editor/DoTweenSettingsDrawer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -43,6 +48,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/DOTweenManager/DoTweenManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/FX/RotatorSequencer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DetectableObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MouseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/DetectableObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/MouseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utility/ObjectPooler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Modifier.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ManualEarningsModifier.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StaticDisplayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CookieManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Modifiers/Modifier.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Modifiers/ManualEarningsModifier.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uiRcxwhJBzo2jbuAViaWP4XrKM" />
@@ -93,6 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1625146517784</updated>
       <workItem from="1625146526749" duration="8585000" />
+      <workItem from="1625332589509" duration="7147000" />
     </task>
     <servers />
   </component>
@@ -111,6 +128,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

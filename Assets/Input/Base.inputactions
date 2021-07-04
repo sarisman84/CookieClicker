@@ -1,0 +1,64 @@
+{
+    "name": "Base",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "9392cb53-20fe-4b8c-bcf6-31084be30d19",
+            "actions": [
+                {
+                    "name": "Mouse Position",
+                    "type": "Value",
+                    "id": "0efc56bb-5937-4b74-9db8-0240928369ec",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Mouse Left Click",
+                    "type": "Button",
+                    "id": "472bec6e-6f34-4d55-b36a-89e6fdfbbe93",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "420fc38f-6b62-4b3c-9985-078d5f64a70e",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Mouse Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "665bc478-6800-4006-b356-1bc4bc039ee6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Mouse Left Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

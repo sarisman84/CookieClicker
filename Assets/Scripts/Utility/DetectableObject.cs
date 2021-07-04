@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+namespace DefaultNamespace
+{
+    public class DetectableObject : MonoBehaviour
+    {
+        public UnityEvent<GameObject> onDetectionTrigger;
+    }
+}

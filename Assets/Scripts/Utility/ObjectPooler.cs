@@ -75,10 +75,16 @@ public static class ObjectPooler
         return foundElement;
     }
 
-    public static T Instantiate<T>(T objToInstantiate, int amm = 300, Transform parent = null) where T : MonoBehaviour
+    public static T Instantiate<T>(T objToInstantiate, int amm = 300, Transform parent = null)
     {
-        return Instantiate(objToInstantiate.gameObject, amm, parent).GetComponent<T>();
+        GameObject obj = objToInstantiate is MonoBehaviour mObj ? mObj.gameObject :
+            objToInstantiate is Component cObj ? cObj.gameObject : null;
+
+        if (obj)
+            return Instantiate(obj, amm, parent).GetComponent<T>();
+        return default;
     }
+
 
     public static T Instantiate<T>(T objToInstantiate, Vector3 position, Quaternion rotation, int amm = 300,
         Transform parent = null) where T : MonoBehaviour
