@@ -31,6 +31,7 @@ public class MouseController : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.GetComponent<DetectableObject>() is
             { } foundDetectableObject)
         {
+            foundDetectableObject.onDetectionHover?.Invoke(gameObject);
             if (mouseLeftClickInput.action.ReadValue<float>() > 0 && mouseLeftClickInput.action.triggered)
                 foundDetectableObject.onDetectionTrigger?.Invoke(gameObject);
             rayColor = Color.green;
